@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: turbin
+    
+server:
+  port: 5001
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+
+# http: //loalhost 
+# http://localhost:8001/actuator/hystrix.stream
+# http://localhost:8002/actuator/hystrix.stream
+# http://localhost:3001/actuator/hystrix.stream
+turbine:
+  #要聚合的服务器，从下面服务器中获取数据    
+  app-config: order-service,zuul
+  #给服务器集群起名，要按格式 new String（"名字"）
+  cluster-name-expression: new String("default")
